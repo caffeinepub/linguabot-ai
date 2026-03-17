@@ -1,0 +1,171 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.12 0.015 243;
+    --foreground: 0.93 0.01 243;
+    --card: 0.16 0.02 243;
+    --card-foreground: 0.93 0.01 243;
+    --popover: 0.16 0.02 243;
+    --popover-foreground: 0.93 0.01 243;
+    --primary: 0.73 0.12 187;
+    --primary-foreground: 0.12 0.015 243;
+    --secondary: 0.19 0.02 243;
+    --secondary-foreground: 0.66 0.02 243;
+    --muted: 0.19 0.02 243;
+    --muted-foreground: 0.66 0.02 243;
+    --accent: 0.73 0.12 187;
+    --accent-foreground: 0.12 0.015 243;
+    --destructive: 0.55 0.2 27;
+    --destructive-foreground: 0.93 0.01 243;
+    --border: 0.25 0.025 243;
+    --input: 0.19 0.02 243;
+    --ring: 0.73 0.12 187;
+    --radius: 0.75rem;
+
+    --sidebar: 0.14 0.018 243;
+    --sidebar-foreground: 0.93 0.01 243;
+    --sidebar-border: 0.22 0.022 243;
+    --sidebar-accent: 0.73 0.12 187;
+    --sidebar-accent-foreground: 0.12 0.015 243;
+    --sidebar-primary: 0.73 0.12 187;
+    --sidebar-primary-foreground: 0.12 0.015 243;
+    --sidebar-ring: 0.73 0.12 187;
+
+    --user-bubble: 0.38 0.07 193;
+    --assistant-bubble: 0.22 0.04 243;
+    --lang-badge: 0.28 0.04 243;
+  }
+
+  * {
+    border-color: oklch(var(--border));
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.3 0.03 243);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.73 0.12 187 / 0.6);
+}
+
+/* Teal glow effects */
+.teal-glow {
+  box-shadow: 0 0 20px oklch(0.73 0.12 187 / 0.3), 0 0 40px
+    oklch(0.73 0.12 187 / 0.1);
+}
+
+.teal-glow-sm {
+  box-shadow: 0 0 10px oklch(0.73 0.12 187 / 0.4);
+}
+
+/* Mic pulse animation */
+@keyframes mic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.73 0.12 187 / 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 12px oklch(0.73 0.12 187 / 0);
+  }
+}
+
+.mic-active {
+  animation: mic-pulse 1.2s ease-in-out infinite;
+}
+
+/* Waveform bars */
+@keyframes wave-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.wave-bar:nth-child(1) {
+  animation: wave-bar 0.8s ease-in-out infinite 0s;
+}
+.wave-bar:nth-child(2) {
+  animation: wave-bar 0.8s ease-in-out infinite 0.1s;
+}
+.wave-bar:nth-child(3) {
+  animation: wave-bar 0.8s ease-in-out infinite 0.2s;
+}
+.wave-bar:nth-child(4) {
+  animation: wave-bar 0.8s ease-in-out infinite 0.3s;
+}
+.wave-bar:nth-child(5) {
+  animation: wave-bar 0.8s ease-in-out infinite 0.4s;
+}
+
+/* Typing dots */
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+.typing-dot:nth-child(1) {
+  animation: typing-dot 1.2s ease-in-out infinite 0s;
+}
+.typing-dot:nth-child(2) {
+  animation: typing-dot 1.2s ease-in-out infinite 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation: typing-dot 1.2s ease-in-out infinite 0.4s;
+}
+
+/* Spotlight hero background */
+.hero-glow {
+  background: radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      oklch(0.73 0.12 187 / 0.12),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 30% 60%,
+      oklch(0.5 0.1 240 / 0.08),
+      transparent 60%
+    );
+}
